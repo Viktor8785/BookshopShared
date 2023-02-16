@@ -1,0 +1,80 @@
+<div class="bg-primary vh-100">
+</div>
+<div class="bg-primary col-12 absolute-0-0">
+    <div class="col-12 height-30">
+        <h1></h1>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <span></span>
+        </div>
+        <div [ngClass]="getClasses('img') + ' bg-white border rounded-2 d-flex justify-content-center'">
+            <img src={{imgsrc}} class="m-2"  height="475">
+        </div>
+        <div id="details" [ngClass]="getClasses('div') + ' bg-white'">
+            <h1 class="fw-bold ms-5 mt-1">{{title}}</h1>
+            <span class="fs-5 ms-5 mt-1">Written by:  </span>
+            <span class="fw-bold fs-4 ms-1 mt-1">{{author}}</span>
+            <p class="fs-6 ms-5 mt-4 fw-bold" *ngIf="getBookDetail().places"> Places:</p>
+            <div class="ms-5" >
+                <span class="fs-6 " *ngFor="let item of getBookDetail().places">{{item}}  </span> 
+            </div>
+            <p class="fs-6 ms-5  mt-2 fw-bold" *ngIf="getBookDetail().subjects"> Subjects:</p>
+            <div class="ms-5" >
+                <span class="fs-6 m-1" *ngFor="let item of getBookDetail().subjects">{{item}}  </span> 
+            </div>
+            <p class="fs-6 ms-5  mt-2 fw-bold" *ngIf="getBookDetail().people"> People:</p>
+            <div class="ms-5" >
+                <span class="fs-6 m-1" *ngFor="let item of getBookDetail().people">{{item}}  </span> 
+            </div>
+            <p class="fs-6 ms-5  mt-2 fw-bold" *ngIf="getBookDetail().times"> Times:</p>
+            <div class="ms-5" >
+                <span class="fs-6 m-1" *ngFor="let item of getBookDetail().times">{{item}}  </span> 
+            </div>
+            <p class="fs-6 ms-5  mt-2 fw-bold" *ngIf="description"> Description:</p>
+            <p class="fs-6 ms-5">{{description}}</p>
+        </div>
+        <div class="col-1">
+            <span></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <span></span>
+        </div>
+        <div class="col-10 bg-white d-flex flex-row">
+            <div class="col-2 d-flex justify-content-center">
+                <div class="col-1" *ngIf="isReserved && isLoggedIn">
+                    <p class="badge bg-success fs-6 ms-5 mt-2 fw-bold  rounded-pill">RESERVED</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <span></span>
+            </div>
+            <div [ngClass]="getClasses('but') + ' d-grid gap-2'">
+                <button type="button" class="btn btn-secondary ms-5 my-2"
+                 (click)="linkBack($event)">
+                        Back    
+                </button>
+            </div>
+            <div class="col-1 d-grid gap-2" *ngIf="!isReserved && isLoggedIn">
+                <button type="button" class="btn btn-primary ms-5 my-2"
+                 (click)="reserveBook($event)">
+                        Reserve    
+                </button>
+            </div>
+            <div class="col-1 d-grid gap-2" *ngIf="isReserved && isLoggedIn">
+                <button type="button" class="btn btn-danger ms-5 my-2"
+                 (click)="reserveBook($event)">
+                        UnReserve    
+                </button>
+            </div>
+        </div>
+        <div class="col-1">
+            <span></span>
+        </div>
+    </div>  
+    <div class="col-12 height-30">
+        <h1></h1>
+    </div>
+</div>

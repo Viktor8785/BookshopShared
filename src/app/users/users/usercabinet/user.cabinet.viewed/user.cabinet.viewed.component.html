@@ -1,0 +1,43 @@
+<div [ngClass]="getClasses() + ' bg-primary'">
+  <div class="div-over" [ngStyle]="getHeight()">
+    <table class="table mt-1 table-borderless">
+      <tbody>
+        <tr class="height-726">
+          <td class="col-1 v-a-m">
+            <button type="button" class="btn btn-secondary btn-lg" [disabled]="prevDisabled" (click) = "changePage('prev')"><<</button>
+          </td>
+          <td class="col-10">
+            <div id="book" class="d-inline-block p-1 mx-1 rounded-2 border border-2 bg-light"
+                *ngFor="let item of getBooks()">
+                <a [routerLink]="[
+                  '/uservewed/bookdetail',
+                    {isbn: item.bookId, imgsrc: item.coverId, title: item.title, author: item.authorName, key: item.key}
+                    ]" >    
+                  <table>
+                    <tr class="height-190">
+                      <td class="bg-light height-190 pb-3">
+                        <img src={{item.coverId}} height="200" width="117">
+                      </td>
+                    </tr>
+                    <tr class="height-74">
+                      <td class="bg-light height-74 v-a-m">
+                        <p class="p-0 m-0 text-center fw-bold"><small>{{item.title | shrinkText:25:'title'}}</small></p>
+                      </td>
+                    </tr>
+                    <tr class="height-74">
+                      <td class="bg-light height-74 v-a-m">
+                        <p class="p-0 m-0 text-center"><small>{{item.authorName | shrinkText:25:'title'}}</small></p>
+                      </td>
+                    </tr>
+                  </table>
+                </a> 
+            </div>
+          </td>
+          <td class="col-1 v-a-m">
+            <button type="button" class="btn btn-secondary btn-lg" [disabled]="nextDisabled" (click) = "changePage('next')">>></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+</div>

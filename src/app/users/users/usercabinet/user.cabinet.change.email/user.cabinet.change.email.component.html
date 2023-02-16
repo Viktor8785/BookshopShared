@@ -1,0 +1,23 @@
+<div [ngClass]="getClasses() + ' bg-primary d-flex justify-content-center'">
+    <div class="div-over bg-white rounded mt-3">
+      <div class="border m-2 rounded">
+        <h3 class="text-center text-secondary p-0 m-0">Change email</h3>
+        <form class="m-3 mt-0" novalidate #form="ngForm" (ngSubmit)="submitForm(form)"
+        (reset)="resetForm()">
+            <label class="mt-2 mx-1 text-secondary">Email</label>
+            <input class="form-control form-control-sm mx-1" name="email"
+            [(ngModel)]="newEmail" required pattern="[a-zA-Z0-9\.\-_]+@[a-z]+\.[a-z]{2,3}"/>
+            <label class="mt-2 mx-1 text-secondary">Password</label>
+            <input [type]="typePassword" class="form-control  form-control-sm mx-1" name="password" 
+            [(ngModel)]="userPassword" required minlength="6"/>
+            <input class="mx-1" type="checkbox" name="showPassword" id="showPassword" [(ngModel)]="showPassword" (change)="setTypePassword($event)" value="true"/>
+            <label class="mt-2 mx-1" for="showPassword"> Show Password</label>
+            <div class="col-12 d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-success btn-sm me-2"
+                  [disabled]="form.invalid">Submit</button>
+                <button type="reset" class="btn btn-secondary btn-sm me-2" routerLink = '/usercabinet'>Cancel</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>

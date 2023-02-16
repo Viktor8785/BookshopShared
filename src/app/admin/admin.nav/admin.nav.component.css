@@ -1,0 +1,42 @@
+ul.nav{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.nav li { 
+    float: left;
+}
+ul.nav a {
+    display: block;
+    text-decoration: none;    
+    padding:5px;
+    margin: 0 5px;
+    text-align: center;
+}
+ul.nav a:hover{
+    color: white;
+}
+.active{
+    border-radius: 5px;
+    background-color: #0d6efd;
+    color: #f4f4f4;  
+}
+.div-fixed{
+    position:fixed;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    height:50px;
+}
+.caption {
+    font-family: annabelle, cursive;
+    font-weight: bold;
+    font-size: 2em;
+    color: #F3CD26;
+    text-shadow: 2px 2px 0 whitesmoke;
+}
+.adm{
+    font-weight: bold;
+    font-size: 2em;
+    color: red;
+}

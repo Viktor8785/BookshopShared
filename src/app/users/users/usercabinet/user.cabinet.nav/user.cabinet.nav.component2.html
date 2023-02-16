@@ -1,0 +1,77 @@
+<div [ngClass]="getClasses()">
+    <table class="table m-0">
+        <tbody>
+            <tr class="bg-light" >
+                <td class="col-4 m-2">
+                    <ul class="nav">
+                        <li><a routerLink="/usercabinet/user-cabinet-viewed" routerLinkActive="active">Viewed</a></li>
+                        <li><a routerLink="/usercabinet/user-cabinet-booked" routerLinkActive="active">Booked</a></li>
+                        <li><a routerLink="/usercabinet/user-orders" routerLinkActive="active">Orders</a></li> 
+                        <li><a routerLink="/usercabinet/user-cabinet-personaldata" routerLinkActive="active">Profile</a></li>
+                        <li><a routerLink="/usercabinet/user-cabinet-change-email" routerLinkActive="active">Change Email</a></li>
+                        <li><a routerLink="/usercabinet/user-cabinet-change-password" routerLinkActive="active">Change Password</a></li>
+                    </ul>
+                </td>
+                <td class="col-1 caption m-0 p-0">
+                    <span>BookShop</span>
+                </td>
+                <td class="col-1">
+                    <div class="mt-1 ms-2 p-0" *ngIf="showButtonMakeOrder">
+                        <button type="button" class="btn btn-success btn-sm ms-4"
+                        routerLink="/usercabinet/user-order" [disabled]="desabledMakeOrder">
+                            Make an Order
+                        </button>
+                    </div>
+                </td>
+                <td class="col-5">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="col-4 m-0 p-0">
+                                    <div class="mt-2">
+                                        <span class="ms-5">User Name: </span>
+                                        <span class="text-primary fw-bold">{{userName}}</span>
+                                    </div>
+                                </td>
+                                <td class="col-2 m-0 p-0">
+                                    <div class="mt-2">
+                                        <span class="ms-0">Status: </span>
+                                        <span class="text-danger fw-bold" *ngIf="userBlocked">BLOCKED</span>
+                                        <span class="text-success fw-bold" *ngIf="!userBlocked">OK</span>
+                                    </div>
+                                </td>
+                                <td class="col-2 m-0 p-0">
+                                    <div class="mt-2">
+                                        <span class="ms-1">Viewed: </span>
+                                        <span class="text-primary fw-bold">{{viewedNumber}}</span>
+                                    </div>
+                                </td>
+                                <td class="col-2 m-0 p-0">
+                                    <div class="mt-2">
+                                        <span class="ms-1">Booked: </span>
+                                        <span class="text-primary fw-bold">{{reservedNumber}}</span>
+                                    </div>
+                                </td>
+                                <td class="col-2 m-0 p-0">
+                                    <div class="mt-2">
+                                        <span class="ms-1">Ordered: </span>
+                                        <span class="text-primary fw-bold">{{orderedNumber}}</span>
+                                    </div>
+                                </td>   
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="col-1">
+                    <div class="mt-1">
+                        <button type="button" class="btn btn-danger btn-sm mx-1"
+                        routerLink="/bookshelf">
+                            Exit Cabinet
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

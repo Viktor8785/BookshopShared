@@ -1,0 +1,47 @@
+<table class="table table-borderless m-0">
+    <tbody>
+        <tr class="bg-light" height="180px">
+            <td class="col-5">
+                <div class="border rounded">
+                    <div class="d-flex flex-row">
+                        <div class="col-6">
+                            <table class="table  table-borderless m-0 p-0">
+                                <tbody class="m-0 p-0">
+                                <tr class="m-0 p-0">
+                                    <td class="text-end p-0 col-7">
+                                        <div class="p-0 m-0">
+                                        <p class="me-1">{{text1 | shrinkText:11:'text'}}</p>
+                                        <p class="me-1">{{text2 | shrinkText:11:'text'}}</p>
+                                        <p class="me-1">{{text3 | shrinkText:11:'text'}}</p>
+                                        <p class="me-1">{{text4 | shrinkText:11:'text'}}</p>
+                                        </div>
+                                    </td>
+                                    <td id="bookshelf-page" class="text-start p-0 col-5">
+                                        <p class="ms-2">{{bookshelfTotalDataLength}}</p>
+                                        <p class="ms-2">{{bookshelfCurrentOffset}}</p>
+                                        <p class="ms-2">{{bookshelfTotalPages}}</p>
+                                        <p class="ms-2">{{bookshelfCurrentPage}}</p>                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div [ngClass]="'col-4 ' + getClasses('cap')">
+                            <span>BookShop</span>
+                        </div>
+                        <div class="col-2 text-center mt-1" *ngIf="isAdmin">
+                            <button type="button" [ngClass]="'btn btn-danger mt-5 ' + getClasses('but')"
+                                routerLink="/admin">
+                                    Admin
+                            </button>                        
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="col-3"><app-booksearch></app-booksearch></td>
+            <td class="col-2"><app-userblock></app-userblock></td>
+        </tr>
+    </tbody>
+</table>
+<app-bookshelf></app-bookshelf>
+<router-outlet></router-outlet>

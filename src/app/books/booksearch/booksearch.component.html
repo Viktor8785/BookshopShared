@@ -1,0 +1,32 @@
+<div class="row">
+    <!--div class="col-6"></div-->
+    <form class="border rounded" novalidate #form="ngForm" (ngSubmit)="submitBookSearchForm(form)"
+    (reset)="resetBookSearchForm()">
+        <div class="row mt-1">  
+            <label for="title" class="col-sm-3 col-form-label text-secondary">Title</label>
+            <div class="col-sm-9">
+                <input id="title" class="form-control form-control-sm" name="title"
+                [(ngModel)]="bookSearch.title" pattern="^[A-Za-z0-9 ]+$"/>
+            </div>
+        </div>
+        <div class="row">
+            <label for="authorname" class="col-sm-3 col-form-label text-secondary">{{text1 | shrinkText:6:'text'}}</label>
+            <div class="col-sm-9">
+                <input id="authorname" class="form-control  form-control-sm" name="authorname"
+                [(ngModel)]="bookSearch.authorName" pattern="^[A-Za-z0-9 ]+$" />
+            </div>
+        </div>
+        <div class="row">
+            <label for="query" class="col-sm-3 col-form-label text-secondary">Subject</label>
+            <div class="col-sm-9">        
+                <input id="query" class="form-control  form-control-sm" name="query"
+                [(ngModel)]="bookSearch.query" pattern="^[A-Za-z0-9 ]+$" />
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-1 mb-2">
+            <button type="submit" class="btn btn-primary btn-sm me-2"
+            [disabled]="form.invalid">Search</button>
+            <button type="reset" class="btn btn-secondary btn-sm">Cancel</button>
+        </div>
+    </form>
+</div>

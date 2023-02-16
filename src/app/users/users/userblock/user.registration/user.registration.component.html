@@ -1,0 +1,36 @@
+<div class="user-entry">
+    <div [ngClass]="getClasses() + ' bg-white rounded'">
+        <div class="border m-0  rounded">
+            <h3 class="text-center text-secondary p-0 m-0">Sign Up</h3>
+            <form class="m-3 mt-0" novalidate #form="ngForm" (ngSubmit)="submitUserRegistrationForm(form)"
+            (reset)="resetUserregistrationForm()" appIdentityValidation2>
+                <label class="mt-2 mx-1 text-secondary">Name</label>
+                <input class="form-control form-control-sm m-1" name="userName"
+                [(ngModel)]="userName" required maxlength="10" pattern="^[A-Za-z0-9 ]+$"/>
+                <label class="mt-2 mx-1 text-secondary">Email</label>
+                <input class="form-control form-control-sm m-1" name="userLogin"
+                [(ngModel)]="userLogin" required pattern="[a-zA-Z0-9\.\-_]+@[a-z]+\.[a-z]{2,3}"/>
+                <label class="mt-2 mx-1 text-secondary">Password</label>
+                <input [type]="typePassword" class="form-control  form-control-sm m-1" name="userPassword" 
+                [(ngModel)]="userPassword" required minlength="6" />            
+                <label class="mt-2 mx-1 text-secondary">Confirm Password</label>
+                <input [type]="typePassword" class="form-control  form-control-sm m-1" [ngStyle]="getStyle()" name="userConfirmPassword"
+                [(ngModel)]="userConfirmPassword" required minlength="6" />
+                <input class="mx-1" type="checkbox" name="showPassword" id="showPassword" [(ngModel)]="showPassword" (change)="setTypePassword($event)" value="true"/>
+                <label class="mt-2 mx-1" for="showPassword"> Show password</label><br>
+                <input class="mx-1" type="checkbox" name="userAgreement" id="userAgreement" [(ngModel)]="userAgreement" value="true"/>
+                <span>
+                <label class="mt-2 mx-1" for="userAgreement"> I agree with rules and conditions</label>
+                </span>            
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-success btn-sm me-2"
+                      [disabled]="form.invalid || !userAgreement">SignUp</button>
+                    <button type="reset" class="btn btn-secondary btn-sm  me-2" routerLink = '/bookshelf/entry'>Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="user-entry-background"></div>
+
+

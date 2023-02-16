@@ -1,0 +1,30 @@
+<div class="user-entry">
+    <div [ngClass]="getClasses() + ' bg-white rounded'">
+      <div class="border rounded">
+        <h3 class="text-center text-secondary p-0 m-0">Log In</h3>
+        <form class="m-3 mt-0" novalidate [formGroup]="userEntryForm" (ngSubmit)="submitUserEntryForm()"
+        (reset)="resetUserEntryForm()">
+            <label for="userLogin" class="mt-2 mx-1 text-secondary">Email</label>
+            <input class="form-control form-control-sm mx-1" id="userLogin"
+              formControlName="userLogin"/>
+            <label for="userPassword" class="mt-2 mx-1 text-secondary">Password</label>
+            <input [type]="typePassword" class="form-control  form-control-sm mx-1" id="userPassword" 
+              formControlName="userPassword"/>
+            <input class="mx-1" type="checkbox" id="showPassword" formControlName="showPassword"
+              (change)="setTypePassword($event)" value="true"/>
+            <label class="mt-2 mx-1" for="showPassword"> Show Password</label>
+            <div class="col-12 d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-success btn-sm me-2"
+                  [disabled]="userEntryForm.invalid">LogIn</button>
+                <button type="reset" class="btn btn-secondary btn-sm me-2" routerLink ="/bookshelf">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm me-2" routerLink="/bookshelf/registration">SignUp</button>
+                <button type="button" class="btn btn-primary btn-sm me-2"
+                  [disabled]="!userId" (click)="sendVerificationEmail($event)">SendEmail</button>
+                <button type="button" class="button-href" routerLink="/bookshelf/forgotpassword">Forgot your password?</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+<div class="user-entry-background"></div>
+

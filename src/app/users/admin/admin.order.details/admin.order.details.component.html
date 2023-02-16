@@ -1,0 +1,135 @@
+<div class="bg-primary div-fixed d-flex justify-content-center">
+    <div class="bg-white" [ngStyle]="getStyleDetail('doc', 10)">
+        <p class="fs-2 fw-bold text-center m-0">User information</p>
+        <div class="d-flex justify-content-center">
+        <div class="border mb-2 bg-light rounded" [ngStyle]="getStyleDetail('user', 16)">
+            <table class="table table-borderless p-0">
+                <tbody id="tbuser">
+                   <tr>
+                    <td>Login:</td>
+                    <td class="text-primary">{{userProfile.userLogin}}</td>
+                    <td>Email:</td>
+                    <td>{{userProfile.userEmail}}</td>
+                   </tr>
+                    <tr>
+                    <td>Nickname:</td>
+                    <td class="text-primary">{{userProfile.userNickname}}</td>
+                    <td>ZipCode:</td>
+                    <td>{{userProfile.userZipCode}}</td>
+                   </tr>
+                   <tr>
+                    <td>ID:</td>
+                    <td class="text-primary">{{userProfile.userId}}</td>
+                    <td>Country:</td>
+                    <td>{{userProfile.userCountry}}</td>
+                   </tr>
+                   <tr>
+                    <td>Birth Date</td>
+                    <td>{{userProfile.userBirthDate.toDate() | date}}</td>
+                    <td>City:</td>
+                    <td>{{userProfile.userCity}}</td>
+                   </tr>
+                   <tr>
+                    <td>Name:</td>
+                    <td>{{userProfile.userName}}</td>
+                    <td>Address:</td>
+                    <td>{{userProfile.userAddress}}</td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <div class="d-flex justify-content-center mx-3">
+            <div class="border ms-1 bg-light rounded" [ngStyle]="getStyleDetail('orderdetail', 0)">
+                <div class="border rounded bg-grey">
+                    <table class="table table-borderless mb-2 p-0">
+                        <tbody>
+                            <tr>
+                                <td colspan=6 class="m-0 p-0" style="text-align: center;">
+                                    <span class="fw-bold m-0">Order # BS-{{userOrder.orderId}}</span>
+                                    <span class="fw-bold mx-2">  from {{userOrder.orderDate?.toDate() | date}}</span>
+                                </td>
+                            </tr>
+                            <tr id="tborder">
+                                <td class="col-2">
+                                    <span class="me-1">Email Sent:</span>
+                                    <span class="text-primary">{{userOrder.sentEmail}}</span>
+                                </td>
+                                <td class="col-2">
+                                    <span class="me-0">Email Date:</span>
+                                    <span class="text-primary">{{userOrder.sentEmailDate?.toDate() | date}}</span>
+                                </td>
+                                <td class="col-2">
+                                    <span class="me-1">Received:</span>
+                                    <span class="text-primary">{{userOrder.received}}</span>
+                                </td>
+                                <td class="col-2">
+                                    <span class="me-0">Receive Date:</span>
+                                    <span class="text-primary">{{userOrder.receiveDate?.toDate() | date}}</span>
+                                </td>
+                                <td class="col-2">
+                                    <span class="me-1">Returned:</span>
+                                    <span class="text-primary">{{userOrder.returned}}</span>
+                                </td>
+                                <td class="col-2">
+                                    <span class="me-0">Returne Date:</span>
+                                    <span class="text-primary">{{userOrder.returneDate?.toDate() | date}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-2" style="text-align: center;">
+                                    <button [disabled]="formControlSentEmail.invalid || userOrder.sentEmail || !userOrder.orderId"
+                                    class="btn btn-sm btn-primary" (click)="sentEmail()">Send Email</button>
+                                </td>
+                                <td class="col-2">
+                                    <input *ngIf="!userOrder.sentEmail && userOrder.orderId" id="formControlSentEmail"
+                                    type="date" class="form-control form-control-sm"  [formControl]="formControlSentEmail">
+                                </td>
+                                <td class="col-2" style="text-align: center;">
+                                    <button [disabled]="formControlReceived.invalid || userOrder.received || !userOrder.orderId" 
+                                    class="btn btn-sm btn-primary" (click)="markReceived()">Received</button>
+                                </td>
+                                <td class="col-2">
+                                    <input *ngIf="!userOrder.received && userOrder.orderId" id="formControlReceived"
+                                    type="date" class="form-control form-control-sm"  [formControl]="formControlReceived">
+                                </td>
+                                <td class="col-2" style="text-align: center;">
+                                    <button [disabled]="formControlReturned.invalid || userOrder.returned || !userOrder.orderId"
+                                    class="btn btn-sm btn-primary" (click)="markReturned()">Returned</button>
+                                </td>
+                                <td class="col-2">
+                                    <input *ngIf="!userOrder.returned && userOrder.orderId" id="formControlReturned"
+                                    type="date" class="form-control form-control-sm"  [formControl]="formControlReturned">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="col-12 border mx-2 bg-light rounded">
+                        <table class="table m-0">
+                            <tbody>
+                               <tr id="tbbook">
+                                <td class="col-1 ps-3">#</td>
+                                <td class="col-6">Title</td>
+                                <td class="col-4">Author</td>
+                                <td class="col-1">ISBN</td>
+                               </tr>
+                               <tr *ngFor="let book of userOrderBooks; let i = index">
+                                <td class="col-1 ps-3">{{i+1}}</td>
+                                <td class="col-6">{{book.title}}</td>
+                                <td class="col-4">{{book.authorName}}</td>
+                                <td class="col-1">{{book.bookId}}</td>
+                               </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="col-1 d-grid mt-3">
+            <button class="btn btn-secondary" (click)="returnBack()" >Return</button>
+        </div>
+    </div>
+</div>

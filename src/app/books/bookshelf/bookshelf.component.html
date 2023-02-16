@@ -1,0 +1,50 @@
+<table class="table bg-primary m-0">
+  <tbody>
+    <tr class="height-756">
+      <td class="col-1 v-a-m">
+        <button type="button" class="btn btn-secondary btn-lg" [disabled]="prevDisabled" (click) = "changePage('prev')"><<</button>
+      </td>
+      <td class="col-10 pb-0">
+        <div id="book" class="d-inline-block p-1 m-1 rounded-2 border border-2 bg-light" *ngFor="let item of getBooks()">
+            <a [routerLink]="[
+              '/bookshelf/bookdetail',
+              {isbn: item.isbn, imgsrc: item.coverId, title: item.title, author: item.authorName, key: item.key}
+              ]" >    
+              <table>
+                <tr class="height-190">
+                  <td class="bg-light height-190">
+                    <p class="p-0 m-0"><img src={{item.coverId}} height="200" width="117"></p>
+                  </td>
+                </tr>
+                <tr class="height-70">
+                  <td class="bg-light height-70 v-a-m">
+                    <p class="p-0 m-0 text-center fw-bold"><small>{{item.title | shrinkText:25:'title'}}</small></p>
+                  </td>
+                </tr>
+                <tr class="height-70">
+                  <td class="bg-light height-70 v-a-m">
+                    <p class="p-0 m-0 text-center"><small>{{item.authorName | shrinkText:25:'title'}}</small></p>
+                  </td>
+                </tr>
+              </table>
+            </a> 
+        </div>
+      </td>
+      <td class="col-1  v-a-m">
+        <button type="button" class="btn btn-secondary btn-lg" [disabled]="nextDisabled" (click) = "changePage('next')">>></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="modal-mess" *ngIf="modalMess">
+  <div [ngClass]="getClasses('modal')">
+    <div class="row bg-white p-5 shadow rounded">
+      <div class="d-inline-block col-9" ><h1 >{{errorMess}}</h1></div>
+      <div class="d-inline-block col-3 m-2 spinner-border text-primary" role="status"></div> 
+      <div class="col-12 d-flex justify-content-center mt-4" *ngIf="failedLoad">
+        <button type="button" class="btn btn-primary btn-sm me-2" (click)="repeatLoading()">Repeat</button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="stopLoading()">Cancel</button>
+      </div>               
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div [ngClass]="getClasses() + ' bg-primary'">
+    <div class="d-flex justify-content-center mt-3">
+        <div class="border mx-2 bg-white rounded div-orders" [ngStyle]="getHeight(16)">
+            <table class="table">
+                <tbody>
+                    <tr class="text-primary bg-grey">
+                        <td><div class="mx-3">#</div></td>
+                        <td>Order ID</td>
+                        <td>Order Date</td>
+                        <td>Receive Date</td>
+                        <td>Returne Date</td>
+                        <td>Show Details</td>
+                    </tr>
+                    <tr *ngFor="let order of userOrders; let i = index">
+                        <td><div class="mx-3">{{i+1}}</div></td>
+                        <td>BS-{{order.orderId}}</td>
+                        <td>{{order.orderDate?.toDate() | date}}</td>
+                        <td>{{order.receiveDate?.toDate() | date}}</td>
+                        <td>{{order.returneDate?.toDate() | date}}</td>
+                        <td>
+                            <button class="btn btn-outline-info btn-sm" [routerLink]="[
+                              '/usercabinet/user-order-detail',
+                              {orderId: order.orderId}
+                            ]">Detals</button>
+                        </td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

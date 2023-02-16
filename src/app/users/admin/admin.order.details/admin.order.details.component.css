@@ -1,0 +1,37 @@
+.user-entry-body-spin {
+    padding: 20px;
+    margin-top: 250px;
+    margin-bottom: 200px;
+    margin-left: 735px;
+    margin-right: 735px;
+    z-index: 960;
+}
+#tborder td {
+    text-align: center; 
+    margin: 0px;
+    padding: 0px;  
+   }
+#tbbook td {
+    font-weight: bold;
+}
+#tbhead td {
+    font-weight: bold;
+}
+#tbuser tr td:nth-child(2n+1) {
+    font-weight: bold;
+    text-align: right;
+}
+.div-fixed{
+    position:fixed;
+    top:51px;
+    right: 0px;
+    left: 0px;
+    height: 100%;
+}
+.div-height-500{
+    height: 500px;
+    overflow:auto;  
+}
+.bg-grey{
+    background-color: rgb(240, 238, 238);
+}

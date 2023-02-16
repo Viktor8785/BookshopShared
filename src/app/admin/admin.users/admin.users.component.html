@@ -1,0 +1,67 @@
+<div class="bg-primary div-fixed" >
+    <div class="d-flex justify-content-center m-3">
+        <div class="border mx-2 bg-white rounded width-600">
+            <form class="m-3" [formGroup]="searchUserForm" (ngSubmit)="onSubmit()" >
+                <div class="form-floating mb-3">
+                    <input id="userLogin" type="text" class="form-control"  placeholder="User Login" formControlName="userLogin">
+                    <label  for="userLogin" class="text-secondary">User Login</label>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit" [disabled]="!searchUserForm.valid">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center" >
+        <div #users class="border mx-2 bg-white rounded" [ngStyle]="getStyleUsers(16)">
+            <table class="table">
+                <tbody>
+                    <tr id="tbhead" class="bg-grey">
+                        <td class="col-1"><div class="mx-3">#</div></td>
+                        <td class="col-2">User Login</td>
+                        <td class="col-1">User Name</td>
+                        <td class="col-1 text-center">Email Waiting</td>
+                        <td class="col-1 text-center">Receive Waiting</td>
+                        <td class="col-1 text-center">Returne Waiting</td>
+                        <td class="col-1 text-center">Blocked</td>
+                        <td class="col-2 text-center">Actions</td>
+                    </tr>
+                    <tr  [ngStyle]="getStyle(i)" *ngFor="let user of usersAdmin; let i = index"
+                     (mouseenter)="isMouseOver=i" (mouseleave)="isMouseOver=-1" class="height-50">
+                        <td class="col-1"><div class="mx-3">{{i+1}}</div></td>
+                        <td class="col-2">{{user.userEmail}}</td>
+                        <td class="col-1">{{user.userName}}</td>
+                        <td class="col-1 text-center">{{user.userEmailWait}}</td>
+                        <td class="col-1 text-center">{{user.userReceiveWait}}</td>
+                        <td class="col-1 text-center">{{user.userReturneWait}}</td>
+                        <td class="col-1 text-center" *ngIf="!user.userBlocked">{{user.userBlocked}}</td>
+                        <td class="col-1 text-center text-danger fw-bold" *ngIf="user.userBlocked">{{user.userBlocked}}</td>
+                        <td class="col-2 text-center">
+                            <div *ngIf="isMouseOver==i" class="d-flex ms-5 justify-content-center">
+                                <div class="mx-1">
+                                    <button class="btn btn-sm btn-outline-info" (click)="saveUserId(user.userId, '/admin/admin-users', i)"
+                                      routerLink='/admin/admin-users-details'>
+                                        Detals
+                                    </button>
+                                </div>
+                                <div class="mx-1" *ngIf="!user.userBlocked">
+                                    <button class="btn btn-sm btn-outline-danger"(click)="blockUserId(user.userId, i)">
+                                        Block
+                                    </button>
+                                </div>
+                                <div class="mx-1" *ngIf="user.userBlocked">
+                                    <button class="btn btn-sm btn-outline-danger"(click)="blockUserId(user.userId, i)">
+                                        Unblock
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="user-entry-mess" *ngIf="modalSpin">
+    <div class="user-entry-body-spin">
+        <div class="d-inline-block col-3 m-2 spinner-border text-primary" role="status"></div> 
+    </div>
+</div>

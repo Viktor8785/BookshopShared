@@ -1,0 +1,51 @@
+<table class="table table-borderless m-0">
+    <tbody>
+        <tr class="bg-light" height="180px">
+            <td class="col-5">
+                <div class="border rounded">
+                    <table class="table table-borderless m-0 p-0">
+                        <tbody class="m-0 p-0">
+                            <td class="col-6 p-0 m-0">
+                                <table class="table  table-borderless m-0 p-0">
+                                    <tbody class="m-0 p-0">
+                                        <tr class="m-0 p-0">
+                                            <td class="text-end p-0 col-7">
+                                                <div class="p-0 m-0">
+                                                <p class="me-1">{{shrinkText(text1, 11, 1600)}}</p>
+                                                <p class="me-1">{{shrinkText(text2, 11, 1600)}}</p>
+                                                <p class="me-1">{{shrinkText(text3, 11, 1600)}}</p>
+                                                <p class="me-1">{{shrinkText(text4, 11, 1600)}}</p>
+                                                </div>
+                                            </td>
+                                            <td id="bookshelf-page" class="text-start p-0 col-5">
+                                                <p class="ms-2">{{bookshelfTotalDataLength}}</p>
+                                                <p class="ms-2">{{bookshelfCurrentOffset}}</p>
+                                                <p class="ms-2">{{bookshelfTotalPages}}</p>
+                                                <p class="ms-2">{{bookshelfCurrentPage}}</p>                                        
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td [ngClass]="getClasses('cap') + ' m-0 p-0'" style="height: 160px; vertical-align: middle;">
+                                <div class="m-0 p-0 mb-2 pb-2">BookShop</div>
+                            </td>
+                            <td class="col-2" style="height: 160px; vertical-align: middle;">
+                                <div class="text-center p-0 m-0" *ngIf="isAdmin">
+                                    <button type="button" [ngClass]="'btn btn-danger ' + getClasses('but')"
+                                        routerLink="/admin">
+                                            Admin
+                                    </button>                        
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+            <td class="col-4"><app-booksearch></app-booksearch></td>
+            <td class="col-3"><app-userblock></app-userblock></td>
+        </tr>
+    </tbody>
+</table>
+<app-bookshelf></app-bookshelf>
+<router-outlet></router-outlet>
