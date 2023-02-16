@@ -78,7 +78,7 @@ IdentityValidation `users/usershared/identity.validation.ts`
 Используются операторы: of, from, pipe, merge, mergeMap, take, finalize, map, takeLast, catchError, timeout, retry.
 Подписки Subscription тщательно закрываются!
 ### Forms
-Применены как шаблонные формы, так и реактивные для разнообразия. Использованы разные дизайны для полей ввода (default, form-loating).
+Применены как шаблонные формы, так и реактивные для разнообразия. Использованы разные дизайны для полей ввода (default, form-floating).
 ### Bootstrap 5
 Для стилизации использован фреймворк библиотеки классов CSS Bootstrap 5.
 ### Material library
