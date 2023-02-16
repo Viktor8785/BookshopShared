@@ -63,9 +63,25 @@ IdentityValidation `users/usershared/identity.validation.ts`
 ### Services
 - служба передачи информации между компонентами и эмитировании событий и подписка на них с помощью EventEmmiter: EmitService `/shared/emit.service.ts`,
 - служба обмена данными с сервером для загрузки и сохранения данных приложения в базе данных на сервере: DatabaseService `/shared/database.service.ts`,
-  реализована с использованием сервиса Firestore Database платформы firebase.google.com
+  реализована с использованием сервиса Firestore Database платформы firebase.google.com,
 - служба авторизации и аутентификации: AuthService `/shared/auth.service` реализована с помощью системы авторизации Authentification платформы firebase.google.com,
 - служба перехвата системных сообщений при возникновении ошибок: ErrorHandlerService `/shared/error-handler.service.ts`,
 - служба REST-запросов к серверу ресурса openlibrary.org для получения данных по книгам библиотеки: RestBooksSource `books/bookshelf/rest.books.source.ts`,
-- служба репозитория данных книг: BooksModel `books/bookshelf/repository.books.model.ts` 
+- служба репозитория данных книг: BooksModel `books/bookshelf/repository.books.model.ts`.
+Все службы работают с данными в асинхронном режиме с помощью Promise, Observable, EventEmmiter.
+Служба REST-запросов реализована с помощью объекта HttpClient, асинхронно возвращающего события загрузки данных книг HttpEvents в формате json.
+### Dependency Injection
+Реализованы через токены класса (useClass) и через токен значения (useValue). Провайдеры определяются как через указание в свойстве модуля providers:[], 
+так и через поле метаданных providedIn: 'root' в декораторе @Injectable.
+### RxJS
+Для выполнения асинхронных операций широко применяется библиотека RxJS: Observable, EventEmmiter - расширение для Subject.
+Используются операторы: of, from, pipe, merge, mergeMap, take, finalize, map, takeLast, catchError, timeout, retry.
+Подписки Subscription тщательно закрываются!
+### Forms
+Применены как шаблонные формы, так и реактивные для разнообразия. Использованы разные дизайны для полей ввода (default, form-loating).
+### Bootstrap 5
+Для стилизации использован фреймворк библиотеки классов CSS Bootstrap 5.
+### Material library
+Использована библиотека Material для создания окна диалога MatDialog в guard типа canDeactivate: `users/usercabinet/guard/usercabinet.candeactivate.guard.ts`. 
+
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
