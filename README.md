@@ -11,13 +11,13 @@ Bookshop - это книжная онлайн библиотека с возмо
 Также доступно просмотреть подробные данные по книге, включая аннотацию.
 
 ## Пользователи
-#### Регистрация
+### Регистрация
 Каждый пользователь может зарегистрироваться с использованием своей электронной почты, как логина, и пользоваться личным кабинетом.
 Регистрация нового пользователя происходит с прохождением процесса аутентификации по ссылке в высылаемом приложением письме.
 Далее зарегистрированный пользователь авторизуется по своему логину-паролю также с прохождением проверки.
 В случае, если пользователь забыл пароль, есть функция его восстановления.
 Аутентификация и авторизация реализованы с помощью системы авторизации Authentification платформы firebase.google.com.
-#### Личный кабинет
+### Личный кабинет
 В личном кабинете сохраняются просмотренные и забронированные пользователем книги. Там же можно оформить заказ на 
 получение забронированных книг. Также в личном кабинете сохраняются все сделанные ранее заказы. В функционал личного кабинета также входят: 
 - редактирование профиля пользователя,
@@ -59,7 +59,7 @@ IdentityValidation `users/usershared/identity.validation.ts`
 - canDeactivate: usercabinetCanDeactivateGuard `users/usercabinet/guard/usercabinet.candeactivate.guard.ts`
 - resolver:  mainResolver `/shared/main.resolver.ts`
 ### Interceptors
-Применен просто для иллюстрации ничего не делающий перехватчик: NoopInterceptor `/shared/noop.interceptor.ts`
+Применен просто для иллюстрации ничего не делающий перехватчик Http-запросов: NoopInterceptor `/shared/noop.interceptor.ts`
 ### Services
 - служба передачи информации между компонентами и эмитировании событий и подписка на них с помощью EventEmmiter: EmitService `/shared/emit.service.ts`,
 - служба обмена данными с сервером для загрузки и сохранения данных приложения в базе данных на сервере: DatabaseService `/shared/database.service.ts`,
@@ -69,12 +69,14 @@ IdentityValidation `users/usershared/identity.validation.ts`
 - служба REST-запросов к серверу ресурса openlibrary.org для получения данных по книгам библиотеки: RestBooksSource `books/bookshelf/rest.books.source.ts`,
 - служба репозитория данных книг: BooksModel `books/bookshelf/repository.books.model.ts`.
 Все службы работают с данными в асинхронном режиме с помощью Promise, Observable, EventEmmiter.
-Служба REST-запросов реализована с помощью объекта HttpClient, асинхронно возвращающего события загрузки данных книг HttpEvents в формате json.
+### REST-запросы
+Служба REST-запросов реализована с помощью объекта HttpClient, асинхронно возвращающего события загрузки данных книг HttpEvents в формате json:
+RestBooksSource `books/bookshelf/rest.books.source.ts`.
 ### Dependency Injection
 Реализованы через токены класса (useClass) и через токен значения (useValue). Провайдеры определяются как через указание в свойстве модуля providers:[], 
 так и через поле метаданных providedIn: 'root' в декораторе @Injectable.
 ### RxJS
-Для выполнения асинхронных операций широко применяется библиотека RxJS: Observable, EventEmmiter - расширение для Subject.
+Для выполнения асинхронных операций широко применяется библиотека RxJS: Observable, EventEmmiter - расширение объекта Subject.
 Используются операторы: of, from, pipe, merge, mergeMap, take, finalize, map, takeLast, catchError, timeout, retry.
 Подписки Subscription тщательно закрываются!
 ### Forms
@@ -83,5 +85,10 @@ IdentityValidation `users/usershared/identity.validation.ts`
 Для стилизации использован фреймворк библиотеки классов CSS Bootstrap 5.
 ### Material library
 Использована библиотека Material для создания окна диалога MatDialog в guard типа canDeactivate: `users/usercabinet/guard/usercabinet.candeactivate.guard.ts`. 
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Верстка HTML
+Применена адаптивная верстка HTML с использованием привязок Angular ngClass и ngStyle.
+### Routing
+Применена маршрутизация для перехода между компонентами `app-routing.module.ts`. Основные и дочерние маршруты. Lazy Load Modules для загрузки модуля личного кабинета пользователя `/users/usercabinet/usercabinet.module.ts` с дочерними маршрутами `/users/usercabinet/usercabinet-routing.module.ts` и модуля администрирования `/admin/admin.module.ts` сщ своими дочерними маршрутами `/admin/admin-routing.module.ts`. Маршруты для загрузки, активации и загрузки дочерних компонентов модулей личного кабинета и администрирования защищены соответствующими guards. При переходе между компонентами иногда применен метод передачи данных в виде параметров маршрутизации `/books/bookshelf/bookshelf.component.ts` -> `/books/bookdetail/bookdetail.component.ts`, в других случаях данные передаются через службу EmitService.
+Применен именованный outlet `popup` для загрузки компонента сообщений ErrorMessageComponent `/shared/error.message/error.message.component.ts`
+### Сайт
+Приложение размещено на странице сайта [https://authentification-74a9d.web.app]
