@@ -51,7 +51,7 @@ Angular для демонстрации компетенции.
 - структурная (аналог *If): appBookshopIf `users/usershared/bookshop.if.directive.ts`,
 - валидатор уровня формы для сравнения значений в ее разных полях: appIdentityValidation `users/usershared/identity.validation.directive.ts` 
 ### Validators
-Кроме стандартных встроенных аттрибутов-валидаторов и класса Validators применены нестандартные валидаторы: EmailValidation `users/usershared/email.validation.ts`,
+Кроме стандартных встроенных атрибутов-валидаторов и класса Validators применены нестандартные валидаторы: EmailValidation `users/usershared/email.validation.ts`,
 IdentityValidation `users/usershared/identity.validation.ts`
 ### Guards
 - canLoad, canActivate, canActivateChild: usercabinetCanloadGuard, adminCanloadGuard `/users/usercabinet/guard/usercabinet.canload.guard.ts`,
@@ -82,13 +82,13 @@ RestBooksSource `books/bookshelf/rest.books.source.ts`.
 ### Forms
 Применены как шаблонные формы, так и реактивные для разнообразия. Использованы разные дизайны для полей ввода (default, form-floating).
 ### Bootstrap 5
-Для стилизации использован фреймворк библиотеки классов CSS Bootstrap 5.
+Для стилизации использован фреймворк Bootstrap 5.
 ### Material library
 Использована библиотека Material для создания окна диалога MatDialog в guard типа canDeactivate: `users/usercabinet/guard/usercabinet.candeactivate.guard.ts`. 
 ### Верстка HTML
 Применена адаптивная верстка HTML с использованием привязок Angular ngClass и ngStyle.
 ### Routing
-Применена маршрутизация для перехода между компонентами `app-routing.module.ts`. Основные и дочерние маршруты. Lazy Load Modules для загрузки модуля личного кабинета пользователя `/users/usercabinet/usercabinet.module.ts` с дочерними маршрутами `/users/usercabinet/usercabinet-routing.module.ts` и модуля администрирования `/admin/admin.module.ts` сщ своими дочерними маршрутами `/admin/admin-routing.module.ts`. Маршруты для загрузки, активации и загрузки дочерних компонентов модулей личного кабинета и администрирования защищены соответствующими guards. При переходе между компонентами иногда применен метод передачи данных в виде параметров маршрутизации `/books/bookshelf/bookshelf.component.ts` -> `/books/bookdetail/bookdetail.component.ts`, в других случаях данные передаются через службу EmitService.
+Применена маршрутизация для перехода между компонентами `app-routing.module.ts`. Основные и дочерние маршруты. Lazy Load Modules для загрузки модуля личного кабинета пользователя `/users/usercabinet/usercabinet.module.ts` с дочерними маршрутами `/users/usercabinet/usercabinet-routing.module.ts` и модуля администрирования `/admin/admin.module.ts` со своими дочерними маршрутами `/admin/admin-routing.module.ts`. Маршруты для загрузки, активации и загрузки дочерних компонентов модулей личного кабинета и администрирования защищены соответствующими guards. При переходе между компонентами иногда применен метод передачи данных в виде параметров маршрутизации `/books/bookshelf/bookshelf.component.ts` -> `/books/bookdetail/bookdetail.component.ts`, в других случаях данные передаются через службу EmitService.
 Применен именованный outlet `popup` для загрузки компонента сообщений ErrorMessageComponent `/shared/error.message/error.message.component.ts`
 ### Сайт
 Приложение размещено на странице сайта [https://authentification-74a9d.web.app]
