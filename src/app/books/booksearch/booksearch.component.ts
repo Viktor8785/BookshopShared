@@ -20,6 +20,11 @@ export class BooksearchComponent implements OnInit {
     this.bookSearch = new BookSearch('', '', '');
   }
 
+  shrinkText(text: string, length: number, width: number) {
+    const widthValue = document.documentElement.clientWidth;
+    return (text.length > length && widthValue <= width) ? text.slice(0,length - 1) + '\u2026' : text;
+  }
+  
   submitBookSearchForm(form: NgForm) {
     if (form.valid) {
       let bookSearchQuery: string = 'language:eng';

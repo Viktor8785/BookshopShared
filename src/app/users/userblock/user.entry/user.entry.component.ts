@@ -135,6 +135,10 @@ export class UserEntryComponent implements OnInit {
     this.router.navigate([{outlets: {popup:['message']}}]);
   }
   
+  getFormControlValue() {
+    return this.userEntryForm.get('userPassword')?.errors?.['minLength'];
+  }
+  
   getClasses(): string {
     const width = document.documentElement.clientWidth;
     return width <= 1600 ? 'user-entry-body-small' : 'user-entry-body'; 

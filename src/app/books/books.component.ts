@@ -35,6 +35,11 @@ export class BooksComponent implements OnInit {
     this.subscr4 = this.emitService.getBookshelfCurrentOffset().subscribe( offset => this.bookshelfCurrentOffset = offset);
   }
 
+  shrinkText(text: string, length: number, width: number) {
+    const widthValue = document.documentElement.clientWidth;
+    return (text.length > length && widthValue <= width) ? text.slice(0,length - 1) + '\u2026' : text;
+  }
+  
   getClasses(value: string): string {
     const width = document.documentElement.clientWidth;
     let normal = '';
@@ -44,6 +49,7 @@ export class BooksComponent implements OnInit {
       case 'cap': {
         normal = 'caption';
         small = 'caption-small';
+        this.isAdmin ? normal += ' col-4' : normal += ' col-6';
       }
       break;
       case 'but': {

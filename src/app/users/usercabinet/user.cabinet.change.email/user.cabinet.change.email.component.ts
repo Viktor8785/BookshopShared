@@ -30,9 +30,23 @@ export class UserCabinetChangeEmailComponent implements OnInit {
     }
   }
 
-  getClasses(): string {
+  getClasses(token: string): string {
     const width = document.documentElement.clientWidth;
-    return width <= 1600 ? 'div-fixed-small' : 'div-fixed'; 
+    let normal = '';
+    let small = '';
+    switch(token) {
+      default:
+      case 'doc': {
+        normal = 'div-fixed';
+        small = 'div-fixed-small';
+      };
+      break;
+      case 'div': {
+        normal = 'div-body';
+        small = 'div-body-small';
+      }
+    }
+    return width <= 1600 ? small : normal; 
   }
   
   resetForm() {

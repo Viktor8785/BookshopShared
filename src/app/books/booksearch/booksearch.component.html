@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row">
-            <label for="authorname" class="col-sm-3 col-form-label text-secondary">{{text1 | shrinkText:6:'text'}}</label>
+            <label for="authorname" class="col-sm-3 col-form-label text-secondary">{{shrinkText(text1, 7, 1600)}}</label>
             <div class="col-sm-9">
                 <input id="authorname" class="form-control  form-control-sm" name="authorname"
                 [(ngModel)]="bookSearch.authorName" pattern="^[A-Za-z0-9 ]+$" />

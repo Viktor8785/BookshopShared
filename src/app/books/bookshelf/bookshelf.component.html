@@ -38,7 +38,7 @@
 </table>
 <div class="modal-mess" *ngIf="modalMess">
   <div [ngClass]="getClasses('modal')">
-    <div class="row bg-white p-5 shadow rounded">
+    <div class="row bg-white p-5 shadow shadow-lg rounded">
       <div class="d-inline-block col-9" ><h1 >{{errorMess}}</h1></div>
       <div class="d-inline-block col-3 m-2 spinner-border text-primary" role="status"></div> 
       <div class="col-12 d-flex justify-content-center mt-4" *ngIf="failedLoad">

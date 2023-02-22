@@ -7,9 +7,17 @@
             <label for="userLogin" class="mt-2 mx-1 text-secondary">Email</label>
             <input class="form-control form-control-sm mx-1" id="userLogin"
               formControlName="userLogin"/>
+            <ul class="text-danger ms-1 p-0" *ngIf="userEntryForm.get('userLogin')?.dirty && userEntryForm.get('userLogin')?.invalid">
+              <li *ngIf="userEntryForm.get('userLogin')?.errors?.['required']">Value required</li>
+              <li *ngIf="userEntryForm.get('userLogin')?.errors?.['userLogin']">Do not match email specification</li>
+            </ul>  
             <label for="userPassword" class="mt-2 mx-1 text-secondary">Password</label>
             <input [type]="typePassword" class="form-control  form-control-sm mx-1" id="userPassword" 
               formControlName="userPassword"/>
+            <ul class="text-danger ms-1 p-0" *ngIf="userEntryForm.get('userPassword')?.dirty && userEntryForm.get('userPassword')?.invalid">
+              <li *ngIf="userEntryForm.get('userPassword')?.errors?.['required']">Value required</li>
+              <li *ngIf="getFormControlValue">Min length is 6 characters</li>
+            </ul>  
             <input class="mx-1" type="checkbox" id="showPassword" formControlName="showPassword"
               (change)="setTypePassword($event)" value="true"/>
             <label class="mt-2 mx-1" for="showPassword"> Show Password</label>

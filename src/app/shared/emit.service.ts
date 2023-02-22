@@ -25,7 +25,7 @@ export class EmitService {
   bookshelfTotalDataLength: EventEmitter<number> = new EventEmitter(true);
   linkBack: null|string = null;
   linkBackUsers: null|string = null;
-  errorMessage!: string;
+  errorMessage: string = 'Please, close this message.';
   errorMessColor = '';
   userId!: string;
   orderId!: string;

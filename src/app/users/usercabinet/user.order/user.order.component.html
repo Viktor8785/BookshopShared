@@ -26,22 +26,47 @@
                 (reset)="resetForm()">
                     <label class="mt-2 mx-1 text-secondary">Name</label>
                     <input class="form-control form-control-sm m-1" name="userName"
-                    [(ngModel)]="userProfile.userName" required maxlength="10" pattern="^[A-Za-z0-9 ]+$"/>
+                    [(ngModel)]="userProfile.userName" required maxlength="10" pattern="^[A-Za-z0-9\- ]+$"/>
+                    <ul class="text-danger p-0" *ngIf="form.controls['userName'].dirty && form.controls['userName'].invalid">
+                        <li *ngIf="form.controls['userName'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userName'].errors?.['pattern']">Only ['A-Z', 'a-z', '0-9', '-', ' '] available</li>
+                    </ul>  
                     <label class="mt-2 mx-1 text-secondary">Email</label>
                     <input class="form-control form-control-sm m-1" name="userEmail"
-                    [(ngModel)]="userProfile.userEmail" required email/>
+                    [(ngModel)]="userProfile.userEmail" required pattern="[a-zA-Z0-9\.\-_]+@[a-z]+\.[a-z]{2,3}"/>
+                    <ul class="text-danger p-0" *ngIf="form.controls['userEmail'].dirty && form.controls['userEmail'].invalid">
+                        <li *ngIf="form.controls['userEmail'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userEmail'].errors?.['pattern']">Do not match email specification</li>
+                    </ul> 
                     <label class="mt-2 mx-1 text-secondary">ZipCode</label>
                     <input class="form-control  form-control-sm m-1" name="userZipCode"
                     [(ngModel)]="userProfile.userZipCode" required minlength="6" maxlength="6" pattern="^[0-9]+$" />
+                    <ul class="text-danger p-0" *ngIf="form.controls['userZipCode'].dirty && form.controls['userZipCode'].invalid">
+                        <li *ngIf="form.controls['userZipCode'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userZipCode'].errors?.['pattern']">Only ['0-9'] available</li>
+                        <li *ngIf="form.controls['userZipCode'].errors?.['minlength']">Min length is 6 characters</li>
+                    </ul>  
                     <label class="mt-2 mx-1 text-secondary">Country</label>
                     <input class="form-control form-control-sm m-1" name="userCountry"
-                    [(ngModel)]="userProfile.userCountry" required pattern="^[A-Za-z0-9 ]+$"/>
+                    [(ngModel)]="userProfile.userCountry" required pattern="^[A-Za-z\-\(\) ]+$"/>
+                    <ul class="text-danger p-0" *ngIf="form.controls['userCountry'].dirty && form.controls['userCountry'].invalid">
+                        <li *ngIf="form.controls['userCountry'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userCountry'].errors?.['pattern']">Only ['A-Z', 'a-z', '-', '()', ' '] available</li>
+                    </ul>  
                     <label class="mt-2 mx-1 text-secondary">City</label>
                     <input class="form-control form-control-sm m-1" name="userCity"
-                    [(ngModel)]="userProfile.userCity" required pattern="^[A-Za-z0-9 ]+$"/>
+                    [(ngModel)]="userProfile.userCity" required pattern="^[A-Za-z0-9\- ]+$"/>
+                    <ul class="text-danger p-0" *ngIf="form.controls['userCity'].dirty && form.controls['userCity'].invalid">
+                        <li *ngIf="form.controls['userCity'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userCity'].errors?.['pattern']">Only ['A-Z', 'a-z', '0-9', '-', ' '] available</li>
+                    </ul>  
                     <label class="mt-2 mx-1 text-secondary">Address</label>
                     <input class="form-control form-control-sm m-1" name="userAddress"
-                    [(ngModel)]="userProfile.userAddress" required pattern="^[A-Za-z0-9., ]+$"/>  
+                    [(ngModel)]="userProfile.userAddress" required pattern="^[A-Za-z0-9.,\-\/ ]+$"/> 
+                    <ul class="text-danger p-0" *ngIf="form.controls['userAddress'].dirty && form.controls['userAddress'].invalid">
+                        <li *ngIf="form.controls['userAddress'].errors?.['required']">Value required</li>
+                        <li *ngIf="form.controls['userAddress'].errors?.['pattern']">Only ['A-Z', 'a-z', '0-9', '-', ' ' . , /] available</li>
+                    </ul>   
                 </form>
             </div>
         </div>

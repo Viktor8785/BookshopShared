@@ -6,16 +6,33 @@
             (reset)="resetUserregistrationForm()" appIdentityValidation2>
                 <label class="mt-2 mx-1 text-secondary">Name</label>
                 <input class="form-control form-control-sm m-1" name="userName"
-                [(ngModel)]="userName" required maxlength="10" pattern="^[A-Za-z0-9 ]+$"/>
+                [(ngModel)]="userName" required maxlength="10" pattern="^[A-Za-z0-9\- ]+$"/>
+                <ul class="text-danger p-0" *ngIf="form.controls['userName'].dirty && form.controls['userName'].invalid">
+                    <li *ngIf="form.controls['userName'].errors?.['required']">Value required</li>
+                    <li *ngIf="form.controls['userName'].errors?.['pattern']">Only ['A-Z', 'a-z', '0-9', '-', ' '] available</li>
+                </ul>  
                 <label class="mt-2 mx-1 text-secondary">Email</label>
                 <input class="form-control form-control-sm m-1" name="userLogin"
                 [(ngModel)]="userLogin" required pattern="[a-zA-Z0-9\.\-_]+@[a-z]+\.[a-z]{2,3}"/>
+                <ul class="text-danger p-0" *ngIf="form.controls['userLogin'].dirty && form.controls['userLogin'].invalid">
+                    <li *ngIf="form.controls['userLogin'].errors?.['required']">Value required</li>
+                    <li *ngIf="form.controls['userLogin'].errors?.['pattern']">Do not match email specification</li>
+                </ul>  
                 <label class="mt-2 mx-1 text-secondary">Password</label>
                 <input [type]="typePassword" class="form-control  form-control-sm m-1" name="userPassword" 
                 [(ngModel)]="userPassword" required minlength="6" />            
+                <ul class="text-danger p-0" *ngIf="form.controls['userPassword'].dirty && form.controls['userPassword'].invalid">
+                    <li *ngIf="form.controls['userPassword'].errors?.['required']">Value required</li>
+                    <li *ngIf="form.controls['userPassword'].errors?.['minlength']">Min length is 6 characters</li>
+                </ul>  
                 <label class="mt-2 mx-1 text-secondary">Confirm Password</label>
                 <input [type]="typePassword" class="form-control  form-control-sm m-1" [ngStyle]="getStyle()" name="userConfirmPassword"
                 [(ngModel)]="userConfirmPassword" required minlength="6" />
+                <ul class="text-danger p-0" *ngIf="form.controls['userConfirmPassword'].dirty && form.invalid">
+                    <li *ngIf="form.controls['userConfirmPassword'].value !== form.controls['userPassword'].value">Confirmed Password is not the same as Password</li>
+                    <li *ngIf="form.controls['userConfirmPassword'].errors?.['required']">Value required</li>
+                    <li *ngIf="form.controls['userConfirmPassword'].errors?.['minlength']">Min length is 6 characters</li>
+                </ul>  
                 <input class="mx-1" type="checkbox" name="showPassword" id="showPassword" [(ngModel)]="showPassword" (change)="setTypePassword($event)" value="true"/>
                 <label class="mt-2 mx-1" for="showPassword"> Show password</label><br>
                 <input class="mx-1" type="checkbox" name="userAgreement" id="userAgreement" [(ngModel)]="userAgreement" value="true"/>

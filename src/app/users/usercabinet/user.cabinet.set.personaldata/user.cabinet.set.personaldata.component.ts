@@ -65,19 +65,30 @@ export class UserCabinetSetPersonaldataComponent implements OnInit {
   };
 }  
 
-getHeight(value: number): any {
+getStyle() {
+  const width = document.documentElement.clientWidth;
   const height = document.documentElement.clientHeight;
-  const width = document.documentElement.clientWidth;
-  let heightValue = width <= 1600 ? height - 85 - value * 2 : height - 51 - value * 2;
-  heightValue > 620 ? heightValue = 620 : true;
-  return {'height':heightValue.toString() + 'px'};
+  return width <= 1600 ? {'height': (height - 85).toString() + 'px'} : {'height': (height - 51).toString() + 'px'}; 
 }
 
-getClasses(): string {
+getClasses(token: string): string {
   const width = document.documentElement.clientWidth;
-  return width <= 1600 ? 'div-fixed-small' : 'div-fixed'; 
+  let normal = '';
+  let small = '';
+  switch(token) {
+    default:
+    case 'doc': {
+      normal = 'div-fixed';
+      small = 'div-fixed-small';
+    };
+    break;
+    case 'div': {
+      normal = 'div-body';
+      small = 'div-body-small';
+    }
+  }
+  return width <= 1600 ? small : normal; 
 }
-
 resetForm() {
 }
 

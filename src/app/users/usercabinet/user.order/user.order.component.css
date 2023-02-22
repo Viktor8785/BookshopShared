@@ -45,3 +45,13 @@ input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
     left: 0px;
     height: 100%;
 }
+ul {
+    list-style-type: none;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline;
+    margin-right: 16px;
+}

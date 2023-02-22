@@ -19,7 +19,7 @@ export class BookshelfComponent implements OnInit {
   private selectedPage!:number;
   public totalPages!: number;
   private offset!: number;
-  private limit = 400;
+  private limit = 200;
   private query: string = 'language:eng';
   public totalDataLength = 0;
   public nextDisabled = false;

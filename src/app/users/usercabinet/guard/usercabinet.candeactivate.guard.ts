@@ -15,18 +15,18 @@ export class usercabinetCanDeactivateGuard implements CanDeactivate<unknown> {
   
   canDeactivate(component: UserCabinetSetPersonaldataComponent): Observable<boolean> | boolean {
     for(let prop in component.userProfileOriginal) {
-    if(component.userProfileOriginal[prop as keyof UserModel] !=
-      component.userProfile[prop as keyof UserModel]) {
-        const dialogRef = this.dialog.open(DialogComponent,
-          {
-            height: '210px',
-            width: '420px',
-            enterAnimationDuration: '0ms',
-            exitAnimationDuration: '0ms',
-            hasBackdrop: false,
-            disableClose: true
-          });
-        return dialogRef.afterClosed();
+      if(component.userProfileOriginal[prop as keyof UserModel] !=
+        component.userProfile[prop as keyof UserModel]) {
+          const dialogRef = this.dialog.open(DialogComponent,
+            {
+              height: '210px',
+              width: '420px',
+              enterAnimationDuration: '0ms',
+              exitAnimationDuration: '0ms',
+              hasBackdrop: false,
+              disableClose: true
+            });
+          return dialogRef.afterClosed();
       };
     };
     return of(true);

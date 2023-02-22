@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class UserblockComponent implements OnInit {
   userId = '';
-  entry = false;
   userBlocked = false;
   userBlockedShow = 0;
   reservedNumber = '';
@@ -26,9 +25,7 @@ export class UserblockComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private emitService: EmitService,
-    private dbService: DatabaseService,
-    private ref: ChangeDetectorRef,
-    private router: Router
+    private dbService: DatabaseService
   ) {
     this.authService.authState();
     if(this.authService.userDataId) {
@@ -76,9 +73,14 @@ export class UserblockComponent implements OnInit {
    
    get userName() {
     if(this.isLoggedIn) {
-      return this.authService.userData.displayName;
+      return this.shrinkText(this.authService.userData.displayName, 6, 1600);
     }
     return '';
+  }
+  
+  shrinkText(text: string, length: number, width: number) {
+    const widthValue = document.documentElement.clientWidth;
+    return (text.length > length && widthValue <= width) ? text.slice(0,length - 1) + '\u2026' : text;
   }
   
   get isLoggedIn() {

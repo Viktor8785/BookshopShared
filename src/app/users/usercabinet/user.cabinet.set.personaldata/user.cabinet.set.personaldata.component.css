@@ -1,5 +1,25 @@
 input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
 input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+.div-fixed-small{
+    position:fixed;
+    top:85px;
+    right: 0px;
+    left: 0px;
+    height: 100%;
+    overflow: auto;
+}
+.div-body{
+    padding: 20px;
+    margin-top: 24px;
+    margin-left: 680px;
+    margin-right: 680px;
+}
+.div-body-small{
+    padding: 20px;
+    margin-top: 24px;
+    margin-left: 220px;
+    margin-right: 220px;
+}
 .div-fixed{
     position:fixed;
     top:51px;
@@ -7,15 +27,13 @@ input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
     left: 0px;
     height: 100%;
 }
-.div-fixed-small{
-    position:fixed;
-    top:85px;
-    right: 0px;
-    left: 0px;
-    height: 100%;
+ul {
+    list-style-type: none;
+    font-size: small;
+    margin: 0;
+    padding: 0;
 }
-.div-over{
-    width: 600px;
-    position:relative;
-    overflow: auto;
+li {
+    display: inline;
+    margin-right: 16px;
 }
